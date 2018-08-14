@@ -119,6 +119,7 @@ button {
 }
 
 #lists h2 {
+	border: 1px solid red; 
 	font-size: 2em;
 	color: #26558b;
 	line-height: 22px;
