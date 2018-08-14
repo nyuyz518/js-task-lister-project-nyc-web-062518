@@ -1,15 +1,12 @@
 document.addEventListener('DOMContentLoaded', () => {
-  //const appRoot = document.getElementById('app-content')
+
+  const listDiv = document.getElementById("app-content");
   const newListFieldName = document.getElementById('new-list-title')
   const lists = []
-  // your solution here
-  // grab DOM elements
-  const listDiv = document.getElementById("app-content");
 
-  //const app = new TaskLister();
   let listButton = document.getElementById('listButton');
 
-  listButton.addEventListener("click", displayTaskForm)
+  listButton.addEventListener("click", bossfunction)
 
   function generateOptionsTags() {
     return lists.map( listName => `<option value="${listName}">${listName}</option>` ).join('')
@@ -20,7 +17,6 @@ document.addEventListener('DOMContentLoaded', () => {
     //let taskForm = document.createElement('div')
 
     //taskForm.setAttribute("id", "app-content")
-
     let newTaskForm = `
     <form id="create-task-form">
       <label for="parent-list">Select List:</label>
@@ -36,17 +32,31 @@ document.addEventListener('DOMContentLoaded', () => {
       <input type="submit" value="Create New Task">
     </form>
   `
-
-
-    // let formOption = document.createElement('option')
-    // formOption.setAttribute('value', 'test')
-    //
-    // formOption.innerText = 'test'
-    //
-    // document.getElementById('parent-list').appendChild(formOption)
-
     listDiv.innerHTML = newTaskForm
     newListFieldName.value = ''
 
+  }
+
+  function displayList(){
+    // debugger
+    let newList =
+    `<div id="lists">
+    <div>
+        <h2> ${generateOptionsTags()}
+        <button data-title= class="delete-list">
+          X
+        </button>
+      </h2>
+    </div>
+    </div>`
+
+    listDiv.innerHTML += newList
+    // newListFieldName.value = ''
+
+  }
+
+  function bossfunction(){
+    displayTaskForm();
+    displayList();
   }
 });
